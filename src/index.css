@@ -1,13 +1,112 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background-color: #f4f4f9;
+  display: flex;
+  justify-content: center;
+  color: #333;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Change to row to put preferences next to the movie card */
+.page-wrapper {
+  display: flex;
+  flex-direction: row; 
+  align-items: flex-start; /* Aligns items to the top */
+  justify-content: center;
+  gap: 40px; /* Space between the preferences and the card */
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 900px; /* Increased width to fit items side-by-side */
+}
+
+/* Ensure the title stays at the top if you want, 
+   but since it's inside the flex-row, we might want to 
+   position it absolutely or move it outside the wrapper. 
+   For now, this keeps it aligned left/top. */
+h1 {
+  margin-top: 0;
+  margin-bottom: 30px;
+  color: #1a1a2e;
+  width: 100%;
+  position: absolute;
+  top: 20px;
+  text-align: center;
+}
+
+/* The preferences container now sits on the left */
+.preferences {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+  margin-top: 80px; /* Space for the absolute h1 title */
+}
+
+select {
+ 
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%; /* Fill the min-width */
+  cursor: pointer;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.chip {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #e43f5a;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(228, 63, 90, 0.2);
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.chip:hover {
+  background-color: #c8364e;
+}
+
+/* The movie card now sits on the right */
+.movie-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 80px; /* Space for the absolute h1 title */
+}
+
+.movie-card h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.movie-card img {
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  margin-bottom: 25px;
+  max-width: 100%;
+}
+
+/* RESPONSIVE: If screen is small, stack them vertically again */
+@media (max-width: 700px) {
+  .page-wrapper {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+  }
+  h1 { position: static; }
+  .preferences, .movie-card { margin-top: 0; }
 }

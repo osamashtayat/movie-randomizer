@@ -29,14 +29,17 @@ function Movie({ movie,OMDPinfo,isLoading }) {
     <div className="movie-card">
       {isLoading ? (<p>Loading...</p>) :
     (   <> <h3>{movie?.title}</h3>
-     <img src={`https://image.tmdb.org/t/p/w185${movie?.poster_path}`} alt={movie?.title}/>
+     { movie.poster_path ?
+       <img src={`https://image.tmdb.org/t/p/w185${movie?.poster_path}`} alt={movie?.title}/> : <p>No Poster Attached</p>
+    }
+      
       <p>release Date : {movie?.release_date}</p>
         <p> {movie?.overview}</p>
        <p> IMDB Rating : {OMDPinfo.imdbRating}</p>
        <p>IMDB Votes : {OMDPinfo.imdbVotes}</p>
        <p> Actors : {OMDPinfo.Actors}</p> 
        <p> Director : {OMDPinfo.Director}</p> 
-       <p> Rated : {OMDPinfo.Rated}</p> </>)}
+       </>)}
     
     </div>
   );
